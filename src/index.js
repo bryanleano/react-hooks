@@ -1,17 +1,21 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 
-function App() {
 
-  const [checked, setChecked] = useState(false);
+function App() {
+  const [name, setName] = useState('Bryan');
+
+  useEffect(() => {
+    document.title = `Celebrate ${name}`;
+  }, []);
 
   return (
-    <div>
-      <input type='checkbox' value={checked} onChange={() => setChecked(!checked)}></input>
-      <p>{checked ? 'checked' : 'not checked'}</p>
-    </div>
-  );
+    <section>
+      <p>Congratulations {name}!</p>
+      <button onClick={() => setName('Will')}>Change Winner</button>
+    </section>
+  )
 }
 
 ReactDOM.render(
